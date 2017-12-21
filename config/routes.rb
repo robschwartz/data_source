@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   root 'setup#index'
   get '/setup' => 'setup#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  post '/incoming' => 'lead#accept'
 end
