@@ -193,6 +193,7 @@ GEM
     multi_json (1.12.2)
     nenv (0.3.0)
     nested_form (0.3.2)
+    newrelic_rpm (4.6.0.338)
     nio4r (2.1.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
@@ -382,6 +383,7 @@ DEPENDENCIES
   lograge
   meta-tags
   modernizr-rails
+  newrelic_rpm
   nokogiri
   pg
   premailer-rails
