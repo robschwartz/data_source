@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171228181057) do
+ActiveRecord::Schema.define(version: 20180103225814) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
@@ -53,6 +53,26 @@ ActiveRecord::Schema.define(version: 20171228181057) do
     t.string   "location"
     t.string   "home_type"
     t.string   "home_id"
+  end
+
+  create_table "providers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "phone"
+    t.string   "county"
+    t.integer  "bed_count"
+    t.integer  "occupied_beds"
+    t.boolean  "medicare"
+    t.boolean  "medicaid"
+    t.string   "provider_number"
+    t.integer  "overall_rating"
+    t.string   "holding_company"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "home_type"
   end
 
   create_table "users", force: :cascade do |t|
