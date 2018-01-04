@@ -10,9 +10,9 @@ class Provider < ApplicationRecord
   def self.import(line)
     Provider.find_or_create_by(provider_number: line[0]) do |prov|
       # need this as a hack to not have name set to array of the full line ?!?
-      prov.health_inspection_rating = line[23],
+      prov.home_inspection_rating = line[23],
 
-      
+
       prov.name = line[1].split.map(&:capitalize).join(' '),
       prov.address = line[2].split.map(&:capitalize).join(' '),
       prov.city = line[3].split.map(&:capitalize).join(' '),
