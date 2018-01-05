@@ -1,5 +1,3 @@
-require 'csv'
-
 URL_BASE="http://www.adulthomedirectory.com"
 # scraper for
 module SitePinger
