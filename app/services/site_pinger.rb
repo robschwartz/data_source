@@ -30,7 +30,6 @@ module SitePinger
     @all_city_links.each do |city_link|
       puts "Checking city page for #{city_link}"
       Nokogiri::HTML(RestClient.get(city_link))
-      sleep(10)
     end
   end
 

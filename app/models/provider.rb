@@ -7,7 +7,7 @@ class Provider < ApplicationRecord
     true if line.include?("Medicaid")
   end
 
-  def self.import(line)
+  def self.import_nursing_homes(line)
     Provider.find_or_create_by(provider_number: line[0]) do |prov|
       # need this as a hack to not have name set to array of the full line ?!?
       prov.home_inspection_rating = line[23],
@@ -27,6 +27,25 @@ class Provider < ApplicationRecord
       prov.holding_company =line[14].split.map(&:capitalize).join(' '),
       prov.overall_rating = line[22]
       prov.home_type = "Nursing Home"
+    end
+  end
+
+  def self.import_assisted_living(line)
+    prov = eval(line)
+    new_provider = Provider.where(name: prov[:name]).empty?
+    if new_provider
+      Provider.create(
+        name: prov[:name],
+        city: prov[:city],
+        state: prov[:state],
+        zip: prov[:zip],
+        phone: prov[:phone],
+        address: prov[:address],
+        description: prov[:text],
+        home_type: "Assisted Living"
+      )
+    else
+      puts "#{prov[:name]}  already exists"
     end
   end
 end
