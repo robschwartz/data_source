@@ -32,7 +32,7 @@ class Provider < ApplicationRecord
 
   def self.import_assisted_living(line)
     prov = eval(line)
-    new_provider = Provider.where(name: prov[:name]).empty?
+    new_provider = Provider.where(name: prov[:name], home_type: "Assisted Living Facility").empty?
     if new_provider
       Provider.create(
         name: prov[:name],
@@ -42,7 +42,7 @@ class Provider < ApplicationRecord
         phone: prov[:phone],
         address: prov[:address],
         description: prov[:text],
-        home_type: "Assisted Living"
+        home_type: "Assisted Living Facility"
       )
     else
       puts "#{prov[:name]}  already exists"
