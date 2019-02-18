@@ -10,3 +10,7 @@ module TempFixForRakeLastComment
 end
 Rake::Application.send :include, TempFixForRakeLastComment
 Rails.application.load_tasks
+
+task :server do
+  `bundle exec rails s -p 3100`
+end

@@ -38,4 +38,21 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  config.model 'Lead' do
+    list do
+      configure :created_at do
+        hide
+      end
+      configure :updated_at do
+        hide
+      end
+      configure :home_id do
+        hide
+      end
+      configure :id do
+        hide
+      end
+    end
+  end
 end
