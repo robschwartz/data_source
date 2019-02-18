@@ -1,3 +1,5 @@
+ruby "2.5.1"
+
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
@@ -9,17 +11,18 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.6'
 
-
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+# # Use Uglifier as compressor for JavaScript assets
+# gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2'
+# gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+
+gem 'unicorn'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -57,7 +60,6 @@ end
 gem 'rails_12factor'
 gem 'haml-rails'
 group :development, :test do
-  gem 'sqlite3'
   gem 'rspec', '~> 3.5.0'
   gem 'rspec-rails', '~> 3.5.0'
   gem 'factory_girl_rails'
@@ -83,7 +85,6 @@ end
 group :production do
   gem 'pg'
   gem 'lograge'
-  gem 'rails_12factor'
   gem 'newrelic_rpm'
 end
 
@@ -98,3 +99,4 @@ gem 'nokogiri'
 gem 'devise', '~> 4.2'
 gem 'rails_admin'
 gem 'rest-client'
+gem 'pg'
