@@ -53,6 +53,9 @@ RailsAdmin.config do |config|
       configure :id do
         hide
       end
+      configure :web_referral do
+        hide
+      end
     end
   end
 end
