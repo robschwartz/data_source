@@ -11,4 +11,5 @@
 
 class Lead < ApplicationRecord
   belongs_to :provider, required: false
+  has_and_belongs_to_many :company, required: false
 end
