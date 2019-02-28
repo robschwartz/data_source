@@ -5,7 +5,8 @@ class LeadController < ApplicationController
     lead = params['lead']
     # main endpoint to accept data from Lead Gen websites
     p params
-    Lead.create(lead_params)
+    lead = Lead.find_or_create_by(number: lead_params["number"])
+    lead.update_attributes(lead_params)
     # params: full name, number, email, location, web_referral, home_type, home_id
     render json: {"status":"accepted"}
   end
