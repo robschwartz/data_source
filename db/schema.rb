@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190328150525) do
+ActiveRecord::Schema.define(version: 20190721175753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,50 @@ ActiveRecord::Schema.define(version: 20190328150525) do
     t.index ["provider_id"], name: "index_leads_on_provider_id", using: :btree
   end
 
+  create_table "loan_companies", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.integer  "price_per_lead"
+    t.integer  "total_leads"
+    t.integer  "leads_remaining"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "loan_companies_leads", id: false, force: :cascade do |t|
+    t.integer "loan_lead_id",    null: false
+    t.integer "loan_company_id", null: false
+    t.index ["loan_company_id", "loan_lead_id"], name: "index_loan_companies_leads_on_loan_company_id_and_loan_lead_id", using: :btree
+    t.index ["loan_lead_id", "loan_company_id"], name: "index_loan_companies_leads_on_loan_lead_id_and_loan_company_id", using: :btree
+  end
+
+  create_table "loan_contacts", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "number"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "loan_company_id"
+    t.index ["loan_company_id"], name: "index_loan_contacts_on_loan_company_id", using: :btree
+  end
+
+  create_table "loan_leads", force: :cascade do |t|
+    t.string   "name"
+    t.string   "number"
+    t.string   "email"
+    t.integer  "annual_sales"
+    t.integer  "years_in_business"
+    t.string   "loan_date"
+    t.string   "company_name"
+    t.string   "loan_amount"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
   create_table "providers", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
@@ -111,4 +155,5 @@ ActiveRecord::Schema.define(version: 20190328150525) do
 
   add_foreign_key "leads", "companies"
   add_foreign_key "leads", "providers"
+  add_foreign_key "loan_contacts", "loan_companies"
 end

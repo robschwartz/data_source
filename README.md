@@ -12,3 +12,5 @@ rake import:assisted_living lib/assets/assisted_living_s_y.txt
 
 Import Nursing Home Facilities
 rake import:assisted_living lib/assets/ProviderInfo_Downloaded.csv
+
+Might need to add cost_per_lead to Provider

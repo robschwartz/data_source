@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   post '/incoming' => 'lead#accept'
+  post '/incoming-loan-lead' => 'lead#accept_loan_lead'
 end

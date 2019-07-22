@@ -1,5 +1,5 @@
 class Provider < ApplicationRecord
-  has_many :leads 
+  # has_many :leads 
 
   def self.medicare_available?(line)
     true if line.include?("Medicare")
