@@ -10,6 +10,8 @@ class LoanLead < ApplicationRecord
     companies.each do |comp|
       self.loan_companies << comp
       # LeadMailer.send(self, comp).deliver_now
+      
+      self.save
     end
   end
 end
