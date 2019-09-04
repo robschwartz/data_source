@@ -9,7 +9,7 @@ class LoanLead < ApplicationRecord
     companies = LoanCompany.where("leads_remaining > ?", 0)
     companies.each do |comp|
       self.loan_companies << comp
-      # LeadMailer.send(self, comp).deliver_now
+      # LeadMailer.send_lead(self, comp).deliver_now
       
       self.save
     end
