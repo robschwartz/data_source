@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190904225742) do
+ActiveRecord::Schema.define(version: 20191112211543) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,6 +115,47 @@ ActiveRecord::Schema.define(version: 20190904225742) do
     t.string   "loan_type"
   end
 
+  create_table "medicare_companies", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.integer  "price_per_lead"
+    t.integer  "total_leads"
+    t.integer  "leads_remaining"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "medicare_companies_leads", id: false, force: :cascade do |t|
+    t.integer "medicare_lead_id",    null: false
+    t.integer "medicare_company_id", null: false
+  end
+
+  create_table "medicare_contacts", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "number"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "medicare_company_id"
+    t.index ["medicare_company_id"], name: "index_medicare_contacts_on_medicare_company_id", using: :btree
+  end
+
+  create_table "medicare_leads", force: :cascade do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.string   "zip"
+    t.boolean  "supplement_plans"
+    t.boolean  "advantage_plan_part_c"
+    t.boolean  "perscription_drug_plan_part_d"
+    t.boolean  "agreement_checked"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
   create_table "providers", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
@@ -157,4 +198,5 @@ ActiveRecord::Schema.define(version: 20190904225742) do
   add_foreign_key "leads", "companies"
   add_foreign_key "leads", "providers"
   add_foreign_key "loan_contacts", "loan_companies"
+  add_foreign_key "medicare_contacts", "medicare_companies"
 end

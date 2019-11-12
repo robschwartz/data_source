@@ -21,11 +21,22 @@ class LeadController < ApplicationController
     render json: {"status":"accepted"}
   end
 
+  def accept_medicare_lead
+    lead = params['medicare_lead']
+    p params
+    lead = MedicareLead.find_or_create_by(phone: medicare_lead_params["phone"])
+    lead.update_attributes(medicare_lead_params)
+    render json: {"status":"accepted"}
+  end
+
   private
+
+  def medicare_lead_params
+    params.require(:medicare_lead).permit(:name, :phone, :zip, :advantage_plan_part_c, :perscription_drug_plan_part_d, :agreement_checked)
+  end
 
   def loan_lead_params
     params.require(:loan_lead).permit(:name, :number, :email, :annual_sales, :years_in_business, :loan_date, :company_name, :loan_amount, :loan_type)
-
   end
 
   def lead_params

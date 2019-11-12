@@ -7,4 +7,5 @@ Rails.application.routes.draw do
 
   post '/incoming' => 'lead#accept'
   post '/incoming-loan-lead' => 'lead#accept_loan_lead'
+  post '/incoming-medicare-lead' => 'lead#accept_medicare_lead'
 end

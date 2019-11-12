@@ -58,4 +58,7 @@ RailsAdmin.config do |config|
       end
     end
   end
+  
+  config.included_models = [ MedicareLead, MedicareContact, MedicareCompany ]
+
 end
