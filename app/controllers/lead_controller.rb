@@ -32,7 +32,7 @@ class LeadController < ApplicationController
   private
 
   def medicare_lead_params
-    params.require(:medicare_lead).permit(:name, :phone, :zip, :advantage_plan_part_c, :perscription_drug_plan_part_d, :agreement_checked)
+    params.require(:medicare_lead).permit(:name, :phone, :zip, :supplement_plans, :advantage_plan_part_c, :perscription_drug_plan_part_d, :agreement_checked)
   end
 
   def loan_lead_params
