@@ -12,7 +12,7 @@ class LeadMailer < ApplicationMailer
     @contact_name = company&.medicare_contacts&.first&.name
 
     mail( :to => company.medicare_contacts.first.email,
-          :bcc => 'rob.ozerfinance@gmail.com, aceeightofspades@gmail.com'
+          :bcc => 'rob.ozerfinance@gmail.com, aceeightofspades@gmail.com',
           :subject => "New Lead by LeadHero"
         )
   rescue => e  
