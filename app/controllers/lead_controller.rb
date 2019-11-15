@@ -22,10 +22,9 @@ class LeadController < ApplicationController
   end
 
   def accept_medicare_lead
-    lead = params['medicare_lead']
     p params
-    lead = MedicareLead.find_or_create_by(phone: medicare_lead_params["phone"])
-    lead.update_attributes(medicare_lead_params)
+    MedicareLead.find_or_create_by(medicare_lead_params)
+    # lead.update_attributes(medicare_lead_params)
     render json: {"status":"accepted"}
   end
 

@@ -1,8 +1,18 @@
-@contact_name, 
+<%= @contact_name %>, 
 
 Please find the details of your new lead below: 
 
-<% @params.each do |key, value| %>
- <%= key.capitalize %>: <%= value %>
- <br>
+Name:   <%= @lead_name %>
+Phone:  <%= @lead_phone %>
+Zip:    <%= @lead_zip %>
+<br>
+Interested in
+<% if @lead_supplement_plans  %>
+  - Supplement Plans
+<% end %>
+<% if @lead_advantage_plan_part_c  %>
+  - Advantage Plan Part C
+<% end %>
+<% if @lead_perscription_drug_plan_part_d  %>
+  - Perscription Drug Plan Part D
 <% end %>

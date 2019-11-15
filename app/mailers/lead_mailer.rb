@@ -1,12 +1,18 @@
 class LeadMailer < ApplicationMailer
   default :from => 'noreply@leadhero.com'
 
-  def send_lead(params, company)
-    puts params
+  def send_lead(lead, company)
+    puts lead.inspect
+    @lead_name = lead.name
+    @lead_phone = lead.phone
+    @lead_zip = lead.zip
+    @lead_supplement_plans = lead.supplement_plans
+    @lead_advantage_plan_part_c = lead.advantage_plan_part_c
+    @lead_perscription_drug_plan_part_d = lead.perscription_drug_plan_part_d
+    @contact_name = company&.medicare_contacts&.first&.name
 
-    @contact_name = company&.contacts&.first&.name
-    mail( :to => company.contacts.first.email,
-          :cc => "rob.ozerfinance@gmail.com",
+    mail( :to => company.medicare_contacts.first.email,
+          
           :subject => "New Lead by LeadHero"
         )
   rescue => e  
