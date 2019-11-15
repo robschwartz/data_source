@@ -9,8 +9,12 @@ class MedicareLead < ApplicationRecord
     companies = MedicareCompany.where("leads_remaining > ?", 0)
     companies.each do |comp|
       self.medicare_companies << comp
-      # LeadMailer.send_lead(self, comp).deliver_now
+      LeadMailer.send_lead(self, comp).deliver_now
       
+      comp.leads_remaining -= 1
+      comp.total_leads += 1
+      comp.save
+
       self.save
     end
   end
