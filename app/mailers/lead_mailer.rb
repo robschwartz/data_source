@@ -11,8 +11,11 @@ class LeadMailer < ApplicationMailer
     @lead_perscription_drug_plan_part_d = lead.perscription_drug_plan_part_d
     @contact_name = company&.medicare_contacts&.first&.name
 
-    mail( :to => company.medicare_contacts.first.email,
-          :bcc => 'rob.ozerfinance@gmail.com, aceeightofspades@gmail.com',
+    # mail( :to => company.medicare_contacts.first.email,
+    #       :bcc => 'rob.ozerfinance@gmail.com, aceeightofspades@gmail.com',
+    #       :subject => "New Lead by LeadHero"
+    #     )
+    mail( :to => 'rob.ozerfinance@gmail.com',
           :subject => "New Lead by LeadHero"
         )
   rescue => e  
